@@ -3,3 +3,4 @@
 2. Single activity
 3. FragmentFactory
 4. Multi-module (multi-feature app)
+5. Navigation components
