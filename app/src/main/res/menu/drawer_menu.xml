@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home"
+            app:showAsAction="ifRoom"
+            />
+
+
+        <item
+            android:id="@+id/nav_feature1"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Feature 1"
+            app:showAsAction="ifRoom"
+            />
+
+
+        <item
+            android:id="@+id/nav_feature2"
+            android:icon="@drawable/ic_accessibility_black_24dp"
+            android:title="Feature 2"
+            app:showAsAction="ifRoom"
+            />
+
+
+
+    </group>
+
+</menu>
