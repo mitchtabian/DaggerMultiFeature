@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : FragmentActivity(),
