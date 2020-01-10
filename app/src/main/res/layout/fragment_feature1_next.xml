@@ -16,6 +16,7 @@
         app:layout_constraintHorizontal_bias=".9"
         android:layout_marginBottom="50dp"
         android:id="@+id/fragment_name"
+        android:text="NAME HAS NOT BEEN SET"
         android:textSize="19sp"
         android:textColor="#000"
         />

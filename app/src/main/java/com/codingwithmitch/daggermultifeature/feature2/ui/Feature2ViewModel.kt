@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.codingwithmitch.daggermultifeature.feature2.di.Feature2Scope
 import com.codingwithmitch.daggermultifeature.feature2.repository.Feature2Repository
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Feature2Scope
 class Feature2ViewModel
 @Inject
 constructor(

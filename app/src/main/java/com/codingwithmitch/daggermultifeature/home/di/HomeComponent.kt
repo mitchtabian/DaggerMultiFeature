@@ -4,7 +4,7 @@ import com.codingwithmitch.daggermultifeature.home.ui.HomeFragment
 import dagger.Subcomponent
 
 @HomeScope
-@Subcomponent(modules = [HomeModule::class])
+@Subcomponent(modules = [HomeModule::class, HomeViewModelModule::class])
 interface HomeComponent {
 
     @Subcomponent.Factory

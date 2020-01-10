@@ -5,7 +5,7 @@ import com.codingwithmitch.daggermultifeature.feature2.ui.Feature2NextFragment
 import dagger.Subcomponent
 
 @Feature2Scope
-@Subcomponent(modules = [Feature2Module::class])
+@Subcomponent(modules = [Feature2Module::class, Feature2ViewModelModule::class])
 interface Feature2Component {
 
     @Subcomponent.Factory

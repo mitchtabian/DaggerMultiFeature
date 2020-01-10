@@ -10,6 +10,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HomeScope
 class HomeViewModel
 @Inject
 constructor(
