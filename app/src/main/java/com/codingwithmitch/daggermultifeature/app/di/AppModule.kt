@@ -8,11 +8,17 @@ import javax.inject.Singleton
 @Module
 class AppModule{
 
-    @Singleton
-    @Provides
-    @Named("application_name")
-    fun provideApplicationName(): String {
-        return "Dagger Multi-feature Demo"
+    @Module
+    companion object{
+
+        @Singleton
+        @Provides
+        @Named("application_name")
+        @JvmStatic
+        fun provideApplicationName(): String {
+            return "Dagger Multi-feature Demo"
+        }
     }
+
 }
 

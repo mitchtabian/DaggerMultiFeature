@@ -10,15 +10,23 @@ import dagger.Provides
 @Module
 class Feature1Module {
 
-    @Feature1Scope
-    @Provides
-    fun provideFeature1LocalDataSource(): Feature1LocalDataSource {
-        return Feature1LocalDataSourceImpl()
+    @Module
+    companion object{
+
+        @Feature1Scope
+        @Provides
+        @JvmStatic
+        fun provideFeature1LocalDataSource(): Feature1LocalDataSource {
+            return Feature1LocalDataSourceImpl()
+        }
+
+        @Feature1Scope
+        @Provides
+        @JvmStatic
+        fun provideFeature1Repository(feature1LocalDataSource: Feature1LocalDataSource): Feature1Repository {
+            return Feature1RepositoryImpl(feature1LocalDataSource)
+        }
+
     }
 
-    @Feature1Scope
-    @Provides
-    fun provideFeature1Repository(feature1LocalDataSource: Feature1LocalDataSource): Feature1Repository {
-        return Feature1RepositoryImpl(feature1LocalDataSource)
-    }
 }

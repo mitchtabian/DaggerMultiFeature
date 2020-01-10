@@ -10,17 +10,24 @@ import dagger.Provides
 @Module
 class HomeModule {
 
-    @HomeScope
-    @Provides
-    fun provideHomeLocalDataSource(): HomeLocalDataSource {
-        return HomeLocalDataSourceImpl()
+    @Module
+    companion object{
+
+        @HomeScope
+        @Provides
+        @JvmStatic
+        fun provideHomeLocalDataSource(): HomeLocalDataSource {
+            return HomeLocalDataSourceImpl()
+        }
+
+        @HomeScope
+        @Provides
+        @JvmStatic
+        fun provideHomeRepository(homeLocalDataSource: HomeLocalDataSource): HomeRepository {
+            return HomeRepositoryImpl(homeLocalDataSource)
+        }
     }
 
-    @HomeScope
-    @Provides
-    fun provideHomeRepository(homeLocalDataSource: HomeLocalDataSource): HomeRepository {
-        return HomeRepositoryImpl(homeLocalDataSource)
-    }
 }
 
 
