@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.feature2
+package com.codingwithmitch.daggermultifeature.feature2.ui
 
 
 import android.content.Context
@@ -8,17 +8,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.codingwithmitch.daggermultifeature.MainNavController
+import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
+import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_feature2_main.*
+import kotlinx.android.synthetic.main.fragment_feature2_main.fragment_name
+import javax.inject.Inject
 
 class Feature2MainFragment : Fragment() {
 
     private val TAG: String = "AppDebug"
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProviderFactory
+
+    val viewModel: Feature2ViewModel by viewModels {
+        viewModelFactory
+    }
+
     lateinit var mainNavController: MainNavController
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature2Component()
+            .create()
+            .inject(this)
+
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +57,19 @@ class Feature2MainFragment : Fragment() {
             findNavController().navigate(R.id.action_feature2MainFragment_to_feature2NextFragment)
         }
 
+        subscribeObservers()
+        initUI()
+    }
+
+    private fun subscribeObservers(){
+        viewModel.feature2MainString.observe(viewLifecycleOwner, Observer { mainString ->
+            fragment_name.text = mainString
+        })
+    }
+
+    private fun initUI(){
         mainNavController.setDrawerItemChecked(R.id.nav_feature2)
+        viewModel.retrieveMainString()
     }
 
     override fun onAttach(context: Context) {

@@ -4,18 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".feature1.Feature1NextFragment"
+    tools:context=".feature1.ui.Feature1NextFragment"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Feature1\nNextFragment"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias=".9"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/fragment_name"
+        android:textSize="19sp"
+        android:textColor="#000"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature
+package com.codingwithmitch.daggermultifeature.app.ui
 
 import androidx.annotation.IdRes
 

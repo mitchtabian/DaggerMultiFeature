@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature
+package com.codingwithmitch.daggermultifeature.app.ui
 
 import android.os.Bundle
 import android.view.Gravity
@@ -10,6 +10,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.codingwithmitch.daggermultifeature.R
 import com.google.android.material.navigation.NavigationView
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -72,6 +73,15 @@ class MainActivity : FragmentActivity(),
             null,
             drawerNavOptions
         )
+    }
+
+    override fun onBackPressed() {
+        if(drawer_layout.isDrawerOpen(Gravity.LEFT)){
+            drawer_layout.closeDrawer(Gravity.LEFT)
+        }
+        else{
+            super.onBackPressed()
+        }
     }
 
     override fun setDrawerItemChecked(@IdRes menuItemId: Int) {
