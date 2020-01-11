@@ -1,10 +1,15 @@
 package com.codingwithmitch.daggermultifeature.home.di
 
+import com.codingwithmitch.daggermultifeature.app.ui.InjectingNavHostFragment
 import com.codingwithmitch.daggermultifeature.home.ui.HomeFragment
 import dagger.Subcomponent
 
 @HomeScope
-@Subcomponent(modules = [HomeModule::class, HomeViewModelModule::class])
+@Subcomponent(modules = [
+    HomeModule::class,
+    HomeViewModelModule::class,
+    HomeFragmentBuildersModule::class
+])
 interface HomeComponent {
 
     @Subcomponent.Factory
@@ -12,6 +17,6 @@ interface HomeComponent {
         fun create(): HomeComponent
     }
 
-    fun inject(homeFragment: HomeFragment)
+    fun inject(fragment: InjectingNavHostFragment)
 
 }

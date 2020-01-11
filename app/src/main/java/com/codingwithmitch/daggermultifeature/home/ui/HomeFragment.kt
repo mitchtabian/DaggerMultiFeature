@@ -14,38 +14,29 @@ import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
+import com.codingwithmitch.daggermultifeature.home.di.HomeScope
+import com.codingwithmitch.daggermultifeature.home.repository.HomeRepository
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 import javax.inject.Named
 
-class HomeFragment : Fragment() {
+@HomeScope
+class HomeFragment
+@Inject
+constructor(
+    private val viewModelFactory: ViewModelProviderFactory,
+    private val homeRepository: HomeRepository,
+    private @Named("application_name") val applicationName: String
+): Fragment() {
 
     private val TAG: String = "AppDebug"
-
-    @Inject
-    @Named("application_name")
-    lateinit var applicationName: String
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProviderFactory
 
     val viewModel: HomeViewModel by viewModels {
         viewModelFactory
     }
 
     lateinit var mainNavController: MainNavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .homeComponent()
-            .create()
-            .inject(this)
-
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +58,7 @@ class HomeFragment : Fragment() {
 
         subscribeObservers()
         initUI()
+        Log.d(TAG, "HomeFragment: $homeRepository")
     }
 
     private fun subscribeObservers(){

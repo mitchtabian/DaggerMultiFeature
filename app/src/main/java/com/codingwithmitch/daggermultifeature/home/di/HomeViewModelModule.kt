@@ -1,7 +1,7 @@
 package com.codingwithmitch.daggermultifeature.home.di
 
 import androidx.lifecycle.ViewModel
-import com.codingwithmitch.daggermultifeature.app.di.ViewModelKey
+import com.codingwithmitch.daggermultifeature.app.di.keys.ViewModelKey
 import com.codingwithmitch.daggermultifeature.home.ui.HomeViewModel
 import dagger.Binds
 import dagger.Module

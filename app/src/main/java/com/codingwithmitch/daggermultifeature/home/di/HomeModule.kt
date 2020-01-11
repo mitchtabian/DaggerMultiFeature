@@ -26,6 +26,7 @@ class HomeModule {
         fun provideHomeRepository(homeLocalDataSource: HomeLocalDataSource): HomeRepository {
             return HomeRepositoryImpl(homeLocalDataSource)
         }
+
     }
 
 }
