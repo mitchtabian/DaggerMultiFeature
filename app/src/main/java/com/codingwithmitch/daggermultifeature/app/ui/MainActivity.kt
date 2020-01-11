@@ -26,10 +26,6 @@ class MainActivity : FragmentActivity(),
         findNavController(R.id.main_nav_host)
     }
 
-    private val appBarConfiguration: AppBarConfiguration by lazy{
-        AppBarConfiguration(navController.graph, drawer_layout)
-    }
-
     private val drawerNavOptions: NavOptions by lazy {
         NavOptions.Builder()
             .setPopUpTo(R.id.homeFragment, false)

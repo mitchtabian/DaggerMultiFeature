@@ -18,7 +18,7 @@ import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFa
 import kotlinx.android.synthetic.main.fragment_feature2_main.*
 import javax.inject.Inject
 
-class Feature2NextFragment : Fragment() {
+class Feature2NextFragment : Fragment(R.layout.fragment_feature2_next) {
 
     private val TAG: String = "AppDebug"
 
@@ -30,23 +30,6 @@ class Feature2NextFragment : Fragment() {
     }
 
     lateinit var mainNavController: MainNavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .feature2Component()
-            .create()
-            .inject(this)
-
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_feature2_next, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,6 +48,11 @@ class Feature2NextFragment : Fragment() {
         viewModel.retrieveNextString()
     }
     override fun onAttach(context: Context) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature2Component()
+            .create()
+            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController
