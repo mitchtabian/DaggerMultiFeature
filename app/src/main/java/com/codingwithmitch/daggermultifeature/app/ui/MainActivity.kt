@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.codingwithmitch.daggermultifeature.R
 import com.google.android.material.navigation.NavigationView
@@ -24,10 +23,6 @@ class MainActivity : FragmentActivity(),
 
     private val navController: NavController by lazy{
         findNavController(R.id.main_nav_host)
-    }
-
-    private val appBarConfiguration: AppBarConfiguration by lazy{
-        AppBarConfiguration(navController.graph, drawer_layout)
     }
 
     private val drawerNavOptions: NavOptions by lazy {
