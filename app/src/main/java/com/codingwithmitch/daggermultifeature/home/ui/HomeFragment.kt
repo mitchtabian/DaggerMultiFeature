@@ -14,7 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
+import com.codingwithmitch.daggermultifeature.app.ui.InjectingFragmentFactory
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
+import com.codingwithmitch.daggermultifeature.home.di.HomeInjectable
 import com.codingwithmitch.daggermultifeature.home.di.HomeScope
 import com.codingwithmitch.daggermultifeature.home.repository.HomeRepository
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -26,9 +29,8 @@ class HomeFragment
 @Inject
 constructor(
     private val viewModelFactory: ViewModelProviderFactory,
-    private val homeRepository: HomeRepository,
     private @Named("application_name") val applicationName: String
-): Fragment() {
+): Fragment(){
 
     private val TAG: String = "AppDebug"
 
@@ -37,6 +39,7 @@ constructor(
     }
 
     lateinit var mainNavController: MainNavController
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +61,6 @@ constructor(
 
         subscribeObservers()
         initUI()
-        Log.d(TAG, "HomeFragment: $homeRepository")
     }
 
     private fun subscribeObservers(){
@@ -74,6 +76,11 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
+//        ((activity?.application) as BaseApplication)
+//            .getAppComponent()
+//            .homeComponent()
+//            .create()
+//            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

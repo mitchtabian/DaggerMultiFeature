@@ -17,6 +17,7 @@ interface HomeComponent {
         fun create(): HomeComponent
     }
 
-    fun inject(fragment: InjectingNavHostFragment)
+//    fun inject(fragment: HomeFragment)
 
+    fun inject(fragment: InjectingNavHostFragment)
 }

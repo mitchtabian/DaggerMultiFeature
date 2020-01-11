@@ -6,6 +6,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import javax.inject.Inject
 
+/**
+ * From: https://github.com/zawadz88/NavigationComponentPlayground/blob/master/app/src/main/java/com/github/zawadz88/navigationcomponentplayground/di/factory/InjectingFragmentFactory.kt
+ */
 class InjectingNavHostFragment
 @Inject
 constructor() : NavHostFragment() {
