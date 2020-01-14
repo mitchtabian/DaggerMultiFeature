@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
@@ -62,15 +61,6 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
-//        ((activity?.application) as BaseApplication)
-//            .getAppComponent()
-//            .getFeature1Component()
-//            .inject(this)
-
-//        ((activity?.application) as BaseApplication)
-//            .getAppComponent()
-//            .getFeature2Component()
-//            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

@@ -7,6 +7,8 @@ import com.codingwithmitch.daggermultifeature.app.di.keys.FragmentKey
 import com.codingwithmitch.daggermultifeature.app.ui.InjectingFragmentFactory
 import com.codingwithmitch.daggermultifeature.app.ui.InjectingNavHostFragment
 import com.codingwithmitch.daggermultifeature.app.ui.MainFragment
+import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1MainFragment
+import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1NextFragment
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,7 +27,7 @@ abstract class FragmentFactoryModule {
     @Binds
     @IntoMap
     @FragmentKey(MainFragment::class)
-    abstract fun bindHomeFragment(fragment: MainFragment): Fragment
+    abstract fun bindMainFragment(fragment: MainFragment): Fragment
 
 }
 

@@ -18,7 +18,7 @@ import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
-//@Feature1Scope
+@Feature1Scope
 class Feature1MainFragment
 @Inject
 constructor(
@@ -56,10 +56,6 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
-//        ((activity?.application) as BaseApplication)
-//            .getAppComponent()
-//            .getFeature1Component()
-//            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

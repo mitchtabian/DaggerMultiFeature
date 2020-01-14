@@ -16,7 +16,7 @@ import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
-//@Feature1Scope
+@Feature1Scope
 class Feature1NextFragment
 @Inject
 constructor(

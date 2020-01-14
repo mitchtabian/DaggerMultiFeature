@@ -11,6 +11,12 @@ import dagger.Subcomponent
 ])
 interface Feature2Component {
 
+    @Subcomponent.Builder
+    interface Builder{
+
+        fun create(): Feature2Component
+    }
+
     fun inject(navHostFragment: InjectingNavHostFragment)
 
 }

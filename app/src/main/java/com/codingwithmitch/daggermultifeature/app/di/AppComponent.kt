@@ -31,9 +31,9 @@ interface AppComponent{
 
     fun inject(navHostFragment: InjectingNavHostFragment)
 
-    fun getFeature1Component(): Feature1Component
+    val feature1Component: Feature1Component.Builder
 
-    fun getFeature2Component(): Feature2Component
+    val feature2Component: Feature2Component.Builder
 
 }
 
