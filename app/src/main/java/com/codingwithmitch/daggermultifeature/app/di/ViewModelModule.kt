@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.codingwithmitch.daggermultifeature.app.di.keys.ViewModelKey
 import com.codingwithmitch.daggermultifeature.app.ui.MainViewModel
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1ViewModel
+import com.codingwithmitch.daggermultifeature.feature2.ui.Feature2ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import javax.inject.Named
 
 @Module
 abstract class ViewModelModule{
@@ -22,5 +21,16 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(Feature1ViewModel::class)
+    abstract fun bindFeature1ViewModel(feature1ViewModel: Feature1ViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(Feature2ViewModel::class)
+    abstract fun bindFeature2ViewModel(feature2ViewModel: Feature2ViewModel): ViewModel
 
 }

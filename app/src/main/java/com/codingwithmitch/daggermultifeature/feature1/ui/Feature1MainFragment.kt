@@ -12,13 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@Feature1Scope
+@Singleton
 class Feature1MainFragment
 @Inject
 constructor(

@@ -14,11 +14,11 @@ import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.feature2.di.Feature2Scope
 import kotlinx.android.synthetic.main.fragment_feature2_main.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@Feature2Scope
+@Singleton
 class Feature2NextFragment
 @Inject
 constructor(

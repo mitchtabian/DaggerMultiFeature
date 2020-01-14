@@ -1,9 +1,11 @@
 package com.codingwithmitch.daggermultifeature.app.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentFactory
 import androidx.navigation.fragment.NavHostFragment
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import javax.inject.Inject
 
 /**
@@ -23,4 +25,27 @@ constructor() : NavHostFragment() {
         childFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
     }
+
+    override fun onAttach(context: Context) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .inject(this)
+        super.onAttach(context)
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

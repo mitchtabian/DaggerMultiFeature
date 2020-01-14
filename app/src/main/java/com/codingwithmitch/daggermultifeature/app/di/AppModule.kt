@@ -4,6 +4,14 @@ import com.codingwithmitch.daggermultifeature.app.repository.MainRepository
 import com.codingwithmitch.daggermultifeature.app.repository.MainRepositoryImpl
 import com.codingwithmitch.daggermultifeature.app.data.MainLocalDataSource
 import com.codingwithmitch.daggermultifeature.app.data.MainLocalDataSourceImpl
+import com.codingwithmitch.daggermultifeature.feature1.data.Feature1LocalDataSource
+import com.codingwithmitch.daggermultifeature.feature1.data.Feature1LocalDataSourceImpl
+import com.codingwithmitch.daggermultifeature.feature1.data.Feature2LocalDataSource
+import com.codingwithmitch.daggermultifeature.feature1.data.Feature2LocalDataSourceImpl
+import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1Repository
+import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1RepositoryImpl
+import com.codingwithmitch.daggermultifeature.feature2.repository.Feature2Repository
+import com.codingwithmitch.daggermultifeature.feature2.repository.Feature2RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
@@ -35,6 +43,36 @@ class AppModule{
         @JvmStatic
         fun provideMainRepository(localDataSource: MainLocalDataSource): MainRepository {
             return MainRepositoryImpl(localDataSource)
+        }
+
+        @Singleton
+        @Provides
+        @JvmStatic
+        fun provideFeature1LocalDataSource(): Feature1LocalDataSource {
+            return Feature1LocalDataSourceImpl()
+        }
+
+        @Singleton
+        @Provides
+        @JvmStatic
+        fun provideFeature1Repository(
+            feature1LocalDataSource: Feature1LocalDataSource
+        ): Feature1Repository {
+            return Feature1RepositoryImpl(feature1LocalDataSource)
+        }
+
+        @Singleton
+        @Provides
+        @JvmStatic
+        fun provideFeature2LocalDataSource(): Feature2LocalDataSource {
+            return Feature2LocalDataSourceImpl()
+        }
+
+        @Singleton
+        @Provides
+        @JvmStatic
+        fun provideFeature2Repository(feature2LocalDataSource: Feature2LocalDataSource): Feature2Repository {
+            return Feature2RepositoryImpl(feature2LocalDataSource)
         }
     }
 

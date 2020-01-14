@@ -1,10 +1,10 @@
 package com.codingwithmitch.daggermultifeature.feature1.repository
 
 import com.codingwithmitch.daggermultifeature.feature1.data.Feature1LocalDataSource
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@Feature1Scope
+@Singleton
 class Feature1RepositoryImpl
 @Inject
 constructor(
