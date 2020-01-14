@@ -5,27 +5,26 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.codingwithmitch.daggermultifeature.R
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
 
-//@Singleton
+@Singleton
 class MainFragment
 @Inject
 constructor(
     private val viewModelFactory: ViewModelProviderFactory,
     private @Named("application_name") val applicationName: String
-): Fragment(){
+): Fragment(R.layout.fragment_main){
 
     private val TAG: String = "AppDebug"
 
@@ -34,13 +33,6 @@ constructor(
     }
 
     lateinit var mainNavController: MainNavController
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,6 +62,15 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
+//        ((activity?.application) as BaseApplication)
+//            .getAppComponent()
+//            .getFeature1Component()
+//            .inject(this)
+
+//        ((activity?.application) as BaseApplication)
+//            .getAppComponent()
+//            .getFeature2Component()
+//            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

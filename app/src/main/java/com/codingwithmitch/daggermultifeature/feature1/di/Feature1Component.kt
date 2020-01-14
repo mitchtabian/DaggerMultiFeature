@@ -1,8 +1,9 @@
 package com.codingwithmitch.daggermultifeature.feature1.di
 
+import com.codingwithmitch.daggermultifeature.app.ui.InjectingNavHostFragment
+import com.codingwithmitch.daggermultifeature.app.ui.MainFragment
 import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1MainFragment
 import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1NextFragment
-import com.codingwithmitch.daggermultifeature.feature2.di.Feature2ViewModelModule
 import dagger.Subcomponent
 
 @Feature1Scope
@@ -13,10 +14,9 @@ import dagger.Subcomponent
 ])
 interface Feature1Component {
 
-    @Subcomponent.Factory
-    interface Factory {
-        fun create(): Feature1Component
-    }
+//    fun inject(mainFragment: MainFragment)
+
+    fun inject(navHostFragment: InjectingNavHostFragment)
 
     fun inject(feature1MainFragment: Feature1MainFragment)
 

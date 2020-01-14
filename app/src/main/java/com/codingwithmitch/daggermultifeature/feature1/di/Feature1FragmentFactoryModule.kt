@@ -11,15 +11,15 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class Feature1FragmentFactoryModule {
 
-//    @Binds
-//    @IntoMap
-//    @FragmentKey(Feature1MainFragment::class)
-//    abstract fun bindMainFragment(fragment: Feature1MainFragment): Fragment
-//
-//    @Binds
-//    @IntoMap
-//    @FragmentKey(Feature1NextFragment::class)
-//    abstract fun bindNextFragment(fragment: Feature1NextFragment): Fragment
+    @Binds
+    @IntoMap
+    @FragmentKey(Feature1MainFragment::class)
+    abstract fun bindMainFragment(fragment: Feature1MainFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(Feature1NextFragment::class)
+    abstract fun bindNextFragment(fragment: Feature1NextFragment): Fragment
 }
 
 

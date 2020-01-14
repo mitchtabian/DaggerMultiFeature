@@ -10,6 +10,7 @@ import com.codingwithmitch.daggermultifeature.feature1.ui.Feature1ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import javax.inject.Named
 
 @Module
 abstract class ViewModelModule{

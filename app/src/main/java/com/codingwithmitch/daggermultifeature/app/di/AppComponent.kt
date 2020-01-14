@@ -14,8 +14,7 @@ import javax.inject.Singleton
 @Component(modules = [
     AppModule::class,
     ViewModelModule::class,
-    FragmentFactoryModule::class,
-    SubcomponentsModule::class
+    FragmentFactoryModule::class
 ])
 interface AppComponent{
 
@@ -30,11 +29,12 @@ interface AppComponent{
 
     fun inject(application: BaseApplication)
 
-    fun inject(fragment: InjectingNavHostFragment)
+    fun inject(navHostFragment: InjectingNavHostFragment)
 
-    fun feature1Component(): Feature1Component.Factory
+    fun getFeature1Component(): Feature1Component
 
-    fun feature2Component(): Feature2Component.Factory
+    fun getFeature2Component(): Feature2Component
+
 }
 
 
