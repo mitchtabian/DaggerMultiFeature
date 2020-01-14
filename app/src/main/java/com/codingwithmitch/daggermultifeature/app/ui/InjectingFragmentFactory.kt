@@ -10,7 +10,8 @@ import javax.inject.Provider
  * Based on https://github.com/alex-townsend/FragmentFactoryDaggerSample/blob/0f89cb3b38983d5868f9aa183f02e47ca44869ef/app/src/main/java/com/atownsend/fragmentfactorysample/di/factory/InjectingFragmentFactory.kt
  */
 class InjectingFragmentFactory
-@Inject constructor(
+@Inject
+constructor(
     private val creators: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>
 ) : FragmentFactory() {
 

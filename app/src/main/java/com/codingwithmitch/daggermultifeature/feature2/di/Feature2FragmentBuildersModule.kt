@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import com.codingwithmitch.daggermultifeature.app.di.keys.FragmentKey
 import com.codingwithmitch.daggermultifeature.feature2.ui.Feature2MainFragment
 import com.codingwithmitch.daggermultifeature.feature2.ui.Feature2NextFragment
-import com.codingwithmitch.daggermultifeature.home.ui.HomeFragment
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

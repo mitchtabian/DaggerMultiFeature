@@ -23,7 +23,9 @@ class Feature1Module {
         @Feature1Scope
         @Provides
         @JvmStatic
-        fun provideFeature1Repository(feature1LocalDataSource: Feature1LocalDataSource): Feature1Repository {
+        fun provideFeature1Repository(
+            feature1LocalDataSource: Feature1LocalDataSource
+        ): Feature1Repository {
             return Feature1RepositoryImpl(feature1LocalDataSource)
         }
 

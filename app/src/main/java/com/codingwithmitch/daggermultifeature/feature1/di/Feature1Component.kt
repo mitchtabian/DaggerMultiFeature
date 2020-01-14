@@ -6,7 +6,11 @@ import com.codingwithmitch.daggermultifeature.feature2.di.Feature2ViewModelModul
 import dagger.Subcomponent
 
 @Feature1Scope
-@Subcomponent(modules = [Feature1Module::class, Feature1ViewModelModule::class])
+@Subcomponent(modules = [
+    Feature1Module::class,
+    Feature1ViewModelModule::class,
+    Feature1FragmentFactoryModule::class
+])
 interface Feature1Component {
 
     @Subcomponent.Factory

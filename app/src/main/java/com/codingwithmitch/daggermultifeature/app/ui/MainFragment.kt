@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.home.ui
+package com.codingwithmitch.daggermultifeature.app.ui
 
 
 import android.content.Context
@@ -11,21 +11,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.app.ui.InjectingFragmentFactory
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.home.di.HomeInjectable
-import com.codingwithmitch.daggermultifeature.home.di.HomeScope
-import com.codingwithmitch.daggermultifeature.home.repository.HomeRepository
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
-@HomeScope
-class HomeFragment
+//@Singleton
+class MainFragment
 @Inject
 constructor(
     private val viewModelFactory: ViewModelProviderFactory,
@@ -34,18 +29,17 @@ constructor(
 
     private val TAG: String = "AppDebug"
 
-    val viewModel: HomeViewModel by viewModels {
+    val viewModel: MainViewModel by viewModels {
         viewModelFactory
     }
 
     lateinit var mainNavController: MainNavController
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,17 +64,12 @@ constructor(
     }
 
     private fun initUI(){
-        mainNavController.setDrawerItemChecked(R.id.nav_home)
-        home_header.text = applicationName
+        mainNavController.setDrawerItemChecked(R.id.nav_main)
+        main_header.text = applicationName
         viewModel.retrieveHomeString()
     }
 
     override fun onAttach(context: Context) {
-//        ((activity?.application) as BaseApplication)
-//            .getAppComponent()
-//            .homeComponent()
-//            .create()
-//            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

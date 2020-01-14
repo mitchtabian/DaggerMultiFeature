@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.ui.HomeFragment">
+    tools:context=".app.ui.MainFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="50dp"
-        android:id="@+id/home_header"
+        android:id="@+id/main_header"
         android:text=""
         android:textSize="28sp"
         android:textColor="#000"
@@ -22,11 +22,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/home_header"
+        app:layout_constraintTop_toBottomOf="@+id/main_header"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="50dp"
-        android:id="@+id/home_description"
+        android:id="@+id/main_description"
         android:text="Where do you want to go?"
         android:textSize="21sp"
         android:textColor="#000"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_go_feature1"
-        app:layout_constraintTop_toBottomOf="@+id/home_description"
+        app:layout_constraintTop_toBottomOf="@+id/main_description"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="50dp"

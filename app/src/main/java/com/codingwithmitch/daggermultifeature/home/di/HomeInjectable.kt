@@ -1,3 +1,0 @@
-package com.codingwithmitch.daggermultifeature.home.di
-
-interface HomeInjectable

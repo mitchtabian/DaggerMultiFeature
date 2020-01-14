@@ -15,33 +15,27 @@ import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1Repository
+import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
-class Feature1NextFragment : Fragment() {
+//@Feature1Scope
+class Feature1NextFragment
+@Inject
+constructor(
+    private val viewModelFactory: ViewModelProviderFactory
+): Fragment() {
 
     private val TAG: String = "AppDebug"
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProviderFactory
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProviderFactory
 
     val viewModel: Feature1ViewModel by viewModels {
         viewModelFactory
     }
 
     lateinit var mainNavController: MainNavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .feature1Component()
-            .create()
-            .inject(this)
-
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,6 +62,11 @@ class Feature1NextFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature1Component()
+            .create()
+            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

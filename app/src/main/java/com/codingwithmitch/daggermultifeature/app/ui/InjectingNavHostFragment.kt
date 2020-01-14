@@ -2,6 +2,8 @@ package com.codingwithmitch.daggermultifeature.app.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.FragmentFactory
 import androidx.navigation.fragment.NavHostFragment
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import javax.inject.Inject
@@ -13,20 +15,32 @@ class InjectingNavHostFragment
 @Inject
 constructor() : NavHostFragment() {
 
+    private val TAG: String = "AppDebug"
+
     @Inject
-    protected lateinit var daggerFragmentInjectionFactory: InjectingFragmentFactory
+    protected lateinit var fragmentFactory: FragmentFactory
 
     override fun onAttach(context: Context) {
         ((activity?.application) as BaseApplication)
             .getAppComponent()
-            .homeComponent()
-            .create()
             .inject(this)
+
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature1Component()
+            .create()
+
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature2Component()
+            .create()
+
         super.onAttach(context)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        childFragmentManager.fragmentFactory = daggerFragmentInjectionFactory
+        Log.d(TAG, "NavHostFragment: $fragmentFactory")
+        childFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
     }
 }

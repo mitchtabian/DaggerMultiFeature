@@ -39,9 +39,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.codingwithmitch.daggermultifeature.home.ui.HomeFragment"
+        android:name="com.codingwithmitch.daggermultifeature.app.ui.MainFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_homeFragment_to_feature1MainFragment"
             app:destination="@id/feature1MainFragment" />
