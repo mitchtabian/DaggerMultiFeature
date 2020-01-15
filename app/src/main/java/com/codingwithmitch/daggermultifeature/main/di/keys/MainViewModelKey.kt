@@ -6,4 +6,4 @@ import kotlin.reflect.KClass
 
 @MapKey
 @Target(AnnotationTarget.FUNCTION)
-annotation class ViewModelKey(val value: KClass<out ViewModel>)
+annotation class MainViewModelKey(val value: KClass<out ViewModel>)

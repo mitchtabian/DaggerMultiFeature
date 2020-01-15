@@ -8,32 +8,25 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
-import com.codingwithmitch.daggermultifeature.main.viewmodels.ViewModelFactory
+import com.codingwithmitch.daggermultifeature.main.di.MainFragmentScope
+import com.codingwithmitch.daggermultifeature.main.viewmodels.MainViewModelFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 import javax.inject.Named
-import javax.inject.Singleton
 
+@MainFragmentScope
 class MainFragment
-//@Inject
+@Inject
 constructor(
-//    private val viewModelFactory: ViewModelFactory,
-//    private @Named("application_name") val applicationName: String
+    private val viewModelFactory: MainViewModelFactory,
+    private @Named("application_name") val applicationName: String
 ): Fragment(R.layout.fragment_main){
 
     private val TAG: String = "AppDebug"
-
-    @Inject
-    @Named("application_name")
-    lateinit var applicationName: String
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     val viewModel: MainViewModel by viewModels {
         viewModelFactory
@@ -45,11 +38,12 @@ constructor(
         super.onViewCreated(view, savedInstanceState)
 
         btn_go_feature1.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_feature1MainFragment)
+            mainNavController.navFeature1()
         }
 
         subscribeObservers()
         initUI()
+
     }
 
     private fun subscribeObservers(){
