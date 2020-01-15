@@ -55,13 +55,6 @@ class MainActivity : FragmentActivity(),
         )
     }
 
-    override fun navFeature2() {
-        navController.navigate(
-            R.id.feature2MainFragment,
-            null,
-            drawerNavOptions)
-    }
-
     override fun navHome() {
         navController.navigate(
             R.id.homeFragment,
@@ -86,7 +79,6 @@ class MainActivity : FragmentActivity(),
 
             R.id.nav_feature1 -> navigationView.menu.getItem(1).isChecked = true
 
-            R.id.nav_feature2 -> navigationView.menu.getItem(2).isChecked = true
         }
 
     }
@@ -102,9 +94,6 @@ class MainActivity : FragmentActivity(),
                 navFeature1()
             }
 
-            R.id.nav_feature2 -> {
-                navFeature2()
-            }
         }
         drawer_layout.closeDrawer(Gravity.LEFT)
         return true

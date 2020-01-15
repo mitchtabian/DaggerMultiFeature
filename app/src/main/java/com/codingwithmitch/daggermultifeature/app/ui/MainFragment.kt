@@ -40,10 +40,6 @@ constructor(
             findNavController().navigate(R.id.action_homeFragment_to_feature1MainFragment)
         }
 
-        btn_go_feature2.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_feature2MainFragment)
-        }
-
         subscribeObservers()
         initUI()
     }
