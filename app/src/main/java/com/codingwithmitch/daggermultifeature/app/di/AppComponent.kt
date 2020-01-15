@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AppModule::class,
-    FragmentFactoryModule::class,
     SubComponentsModule::class
 ])
 interface AppComponent{
@@ -27,8 +26,6 @@ interface AppComponent{
     }
 
     fun inject(application: BaseApplication)
-
-    fun inject(navHostFragment: InjectingNavHostFragment)
 
     fun feature1Component(): Feature1Component.Factory
 
