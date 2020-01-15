@@ -3,12 +3,10 @@ package com.codingwithmitch.daggermultifeature.app.ui
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.NavHostFragment
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentBuildersModule
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -34,16 +32,13 @@ constructor() : NavHostFragment() {
     }
 
     override fun onAttach(context: Context) {
-        val feature1Component = ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .feature1Component()
-            .create()
-
         val appComponent = ((activity?.application) as BaseApplication)
             .getAppComponent()
 
         appComponent.inject(this)
 
+        // DEBUG
+        // check map for viewmodels
         for(viewmodel in creators.entries){
             Log.d(TAG, "ViewModel Map: ${viewmodel.value.get().javaClass.name}")
         }

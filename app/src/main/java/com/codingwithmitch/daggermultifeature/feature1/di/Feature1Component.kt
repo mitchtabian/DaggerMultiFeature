@@ -7,7 +7,6 @@ import dagger.Subcomponent
 @Feature1FragmentScope
 @Subcomponent(
     modules = [
-        Feature1FragmentBuildersModule::class,
         Feature1ViewModelsModule::class
     ]
 )
