@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.app.di.keys
+package com.codingwithmitch.daggermultifeature.main.di.keys
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

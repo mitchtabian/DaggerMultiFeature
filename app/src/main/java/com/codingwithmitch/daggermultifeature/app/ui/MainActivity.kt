@@ -27,7 +27,7 @@ class MainActivity : FragmentActivity(),
 
     private val drawerNavOptions: NavOptions by lazy {
         NavOptions.Builder()
-            .setPopUpTo(R.id.homeFragment, false)
+            .setPopUpTo(R.id.mainFragment, false)
             .build()
     }
 
@@ -55,16 +55,9 @@ class MainActivity : FragmentActivity(),
         )
     }
 
-    override fun navFeature2() {
+    override fun navMain() {
         navController.navigate(
-            R.id.feature2MainFragment,
-            null,
-            drawerNavOptions)
-    }
-
-    override fun navHome() {
-        navController.navigate(
-            R.id.homeFragment,
+            R.id.mainFragment,
             null,
             drawerNavOptions
         )
@@ -86,7 +79,6 @@ class MainActivity : FragmentActivity(),
 
             R.id.nav_feature1 -> navigationView.menu.getItem(1).isChecked = true
 
-            R.id.nav_feature2 -> navigationView.menu.getItem(2).isChecked = true
         }
 
     }
@@ -95,16 +87,13 @@ class MainActivity : FragmentActivity(),
         when(item.itemId){
 
             R.id.nav_main -> {
-                navHome()
+                navMain()
             }
 
             R.id.nav_feature1 -> {
                 navFeature1()
             }
 
-            R.id.nav_feature2 -> {
-                navFeature2()
-            }
         }
         drawer_layout.closeDrawer(Gravity.LEFT)
         return true

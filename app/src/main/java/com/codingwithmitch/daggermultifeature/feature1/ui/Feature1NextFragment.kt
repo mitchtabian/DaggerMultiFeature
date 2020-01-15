@@ -11,17 +11,21 @@ import androidx.lifecycle.Observer
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
 class Feature1NextFragment
-@Inject
+//@Inject
 constructor(
-    private val viewModelFactory: Feature1ViewModelFactory
+//    private val viewModelFactory: Feature1ViewModelFactory
 ): Fragment(R.layout.fragment_feature1_next) {
 
     private val TAG: String = "AppDebug"
+
+    @Inject
+    lateinit var viewModelFactory: Feature1ViewModelFactory
 
     val viewModel: Feature1ViewModel by viewModels {
         viewModelFactory
@@ -33,6 +37,8 @@ constructor(
         super.onViewCreated(view, savedInstanceState)
         subscribeObservers()
         initUI()
+
+        Log.d(TAG, "Feature1NextFragment: $viewModel")
     }
 
     private fun subscribeObservers(){
@@ -47,6 +53,11 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature1Component()
+            .create()
+            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

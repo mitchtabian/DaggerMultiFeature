@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.app.data
+package com.codingwithmitch.daggermultifeature.main.data
 
 interface MainLocalDataSource {
 

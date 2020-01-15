@@ -1,16 +1,14 @@
-package com.codingwithmitch.daggermultifeature.app.repository
+package com.codingwithmitch.daggermultifeature.main.repository
 
-import com.codingwithmitch.daggermultifeature.app.data.MainLocalDataSource
+import com.codingwithmitch.daggermultifeature.main.data.MainLocalDataSource
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
-@Singleton
 class MainRepositoryImpl
 @Inject
 constructor(
     private val localDataSource: MainLocalDataSource
-) : MainRepository{
+) : MainRepository {
 
     override suspend fun getHomeString(): String {
         return localDataSource.getMainString()

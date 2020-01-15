@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/main_nav_host"
-        android:name="com.codingwithmitch.daggermultifeature.app.ui.InjectingNavHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.app.repository
+package com.codingwithmitch.daggermultifeature.main.repository
 
 interface MainRepository {
 

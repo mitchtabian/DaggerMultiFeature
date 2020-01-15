@@ -20,13 +20,6 @@
             />
 
 
-        <item
-            android:id="@+id/nav_feature2"
-            android:icon="@drawable/ic_accessibility_black_24dp"
-            android:title="Feature 2"
-            app:showAsAction="ifRoom"
-            />
-
 
 
     </group>

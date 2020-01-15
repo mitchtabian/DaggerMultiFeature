@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.app.viewmodels
+package com.codingwithmitch.daggermultifeature.main.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

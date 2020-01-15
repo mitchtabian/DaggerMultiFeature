@@ -18,12 +18,15 @@ import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
 class Feature1MainFragment
-@Inject
+//@Inject
 constructor(
-    private val viewModelFactory: Feature1ViewModelFactory
+//    private val viewModelFactory: Feature1ViewModelFactory
 ): Fragment(R.layout.fragment_feature1_main) {
 
     private val TAG: String = "AppDebug"
+
+    @Inject
+    lateinit var viewModelFactory: Feature1ViewModelFactory
 
     val viewModel: Feature1ViewModel by viewModels {
         viewModelFactory
@@ -40,6 +43,7 @@ constructor(
 
         subscribeObservers()
         initUI()
+        Log.d(TAG, "Feature1MainFragment: $viewModel")
     }
 
     private fun subscribeObservers(){

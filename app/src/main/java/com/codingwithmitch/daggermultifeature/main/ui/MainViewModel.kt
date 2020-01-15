@@ -1,16 +1,14 @@
-package com.codingwithmitch.daggermultifeature.app.ui
+package com.codingwithmitch.daggermultifeature.main.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codingwithmitch.daggermultifeature.app.repository.MainRepository
+import com.codingwithmitch.daggermultifeature.main.repository.MainRepository
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class MainViewModel
 @Inject
 constructor(

@@ -1,12 +1,11 @@
-package com.codingwithmitch.daggermultifeature.app.data
+package com.codingwithmitch.daggermultifeature.main.data
 
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class MainLocalDataSourceImpl
 @Inject
-constructor(): MainLocalDataSource{
+constructor():
+    MainLocalDataSource {
 
     override suspend fun getMainString(): String {
         return "MainFragment"

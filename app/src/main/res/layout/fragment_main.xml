@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".app.ui.MainFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,17 +40,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="50dp"
         android:text="feature 1"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_go_feature2"
-        app:layout_constraintTop_toBottomOf="@+id/btn_go_feature1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="50dp"
-        android:text="feature 2"
         />
 
     <TextView
