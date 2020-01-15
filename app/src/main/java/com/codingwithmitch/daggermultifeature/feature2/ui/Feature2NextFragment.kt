@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
+import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_feature2_main.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,14 +22,14 @@ import javax.inject.Singleton
 class Feature2NextFragment
 @Inject
 constructor(
-    private val viewModelFactory: ViewModelProviderFactory
+//    private val viewModelFactory: ViewModelFactory
 ): Fragment() {
 
     private val TAG: String = "AppDebug"
 
-    val viewModel: Feature2ViewModel by viewModels {
-        viewModelFactory
-    }
+//    val viewModel: Feature2ViewModel by viewModels {
+//        viewModelFactory
+//    }
 
     lateinit var mainNavController: MainNavController
 
@@ -47,14 +47,14 @@ constructor(
     }
 
     private fun subscribeObservers(){
-        viewModel.feature2NextString.observe(viewLifecycleOwner, Observer { nextString ->
-            fragment_name.text = nextString
-        })
+//        viewModel.feature2NextString.observe(viewLifecycleOwner, Observer { nextString ->
+//            fragment_name.text = nextString
+//        })
     }
 
     private fun initUI(){
         mainNavController.setDrawerItemChecked(R.id.nav_feature2)
-        viewModel.retrieveNextString()
+//        viewModel.retrieveNextString()
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)

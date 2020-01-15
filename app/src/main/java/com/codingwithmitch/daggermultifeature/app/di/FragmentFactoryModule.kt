@@ -31,15 +31,15 @@ abstract class FragmentFactoryModule {
     @FragmentKey(MainFragment::class)
     abstract fun bindMainFragment(fragment: MainFragment): Fragment
 
-    @Binds
-    @IntoMap
-    @FragmentKey(Feature1MainFragment::class)
-    abstract fun bindFeature1MainFragment(fragment: Feature1MainFragment): Fragment
-
-    @Binds
-    @IntoMap
-    @FragmentKey(Feature1NextFragment::class)
-    abstract fun bindFeature1NextFragment(fragment: Feature1NextFragment): Fragment
+//    @Binds
+//    @IntoMap
+//    @FragmentKey(Feature1MainFragment::class)
+//    abstract fun bindFeature1MainFragment(fragment: Feature1MainFragment): Fragment
+//
+//    @Binds
+//    @IntoMap
+//    @FragmentKey(Feature1NextFragment::class)
+//    abstract fun bindFeature1NextFragment(fragment: Feature1NextFragment): Fragment
 
     @Binds
     @IntoMap

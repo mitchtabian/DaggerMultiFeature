@@ -24,8 +24,8 @@ constructor() : NavHostFragment() {
     @Inject
     protected lateinit var fragmentFactory: FragmentFactory
 
-    @Inject
-    protected lateinit var creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+//    @Inject
+//    protected lateinit var creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "NavHostFragment: $fragmentFactory")
@@ -44,9 +44,9 @@ constructor() : NavHostFragment() {
 
         appComponent.inject(this)
 
-        for(viewmodel in creators.entries){
-            Log.d(TAG, "ViewModel Map: ${viewmodel.value.get().javaClass.name}")
-        }
+//        for(viewmodel in creators.entries){
+//            Log.d(TAG, "ViewModel Map: ${viewmodel.value.get().javaClass.name}")
+//        }
         super.onAttach(context)
     }
 

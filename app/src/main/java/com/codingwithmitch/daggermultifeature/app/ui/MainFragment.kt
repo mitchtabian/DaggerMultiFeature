@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
+import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 import javax.inject.Named
@@ -21,15 +21,15 @@ import javax.inject.Singleton
 class MainFragment
 @Inject
 constructor(
-    private val viewModelFactory: ViewModelProviderFactory,
+//    private val viewModelFactory: ViewModelFactory,
     private @Named("application_name") val applicationName: String
 ): Fragment(R.layout.fragment_main){
 
     private val TAG: String = "AppDebug"
 
-    val viewModel: MainViewModel by viewModels {
-        viewModelFactory
-    }
+//    val viewModel: MainViewModel by viewModels {
+//        viewModelFactory
+//    }
 
     lateinit var mainNavController: MainNavController
 
@@ -49,15 +49,15 @@ constructor(
     }
 
     private fun subscribeObservers(){
-        viewModel.homeString.observe(viewLifecycleOwner, Observer { homeString ->
-            fragment_name.text = homeString
-        })
+//        viewModel.homeString.observe(viewLifecycleOwner, Observer { homeString ->
+//            fragment_name.text = homeString
+//        })
     }
 
     private fun initUI(){
         mainNavController.setDrawerItemChecked(R.id.nav_main)
         main_header.text = applicationName
-        viewModel.retrieveHomeString()
+//        viewModel.retrieveHomeString()
     }
 
     override fun onAttach(context: Context) {

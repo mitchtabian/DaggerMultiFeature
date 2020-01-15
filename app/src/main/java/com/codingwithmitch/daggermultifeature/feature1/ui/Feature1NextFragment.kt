@@ -11,14 +11,14 @@ import androidx.lifecycle.Observer
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
+import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
 class Feature1NextFragment
 @Inject
 constructor(
-    private val viewModelFactory: ViewModelProviderFactory
+    private val viewModelFactory: Feature1ViewModelFactory
 ): Fragment(R.layout.fragment_feature1_next) {
 
     private val TAG: String = "AppDebug"
