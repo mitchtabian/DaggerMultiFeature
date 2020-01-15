@@ -13,20 +13,21 @@ class Feature1Module {
     @Module
     companion object{
 
-        @Feature1Scope
+        @Feature1FragmentScope
         @Provides
         @JvmStatic
         fun provideFeature1LocalDataSource(): Feature1LocalDataSource {
             return Feature1LocalDataSourceImpl()
         }
 
-        @Feature1Scope
+        @Feature1FragmentScope
         @Provides
         @JvmStatic
-        fun provideFeature1Repository(feature1LocalDataSource: Feature1LocalDataSource): Feature1Repository {
+        fun provideFeature1Repository(
+            feature1LocalDataSource: Feature1LocalDataSource
+        ): Feature1Repository {
             return Feature1RepositoryImpl(feature1LocalDataSource)
         }
-
     }
 
 }

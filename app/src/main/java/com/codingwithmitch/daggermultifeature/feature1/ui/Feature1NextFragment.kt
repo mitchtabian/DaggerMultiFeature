@@ -5,26 +5,26 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
-import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1Repository
+import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
+import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
-class Feature1NextFragment : Fragment(R.layout.fragment_feature1_next) {
+@Feature1FragmentScope
+class Feature1NextFragment
+@Inject
+constructor(
+    private val viewModelFactory: Feature1ViewModelFactory
+): Fragment(R.layout.fragment_feature1_next) {
 
     private val TAG: String = "AppDebug"
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProviderFactory
 
     val viewModel: Feature1ViewModel by viewModels {
         viewModelFactory

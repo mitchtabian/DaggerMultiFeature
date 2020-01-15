@@ -1,9 +1,9 @@
 package com.codingwithmitch.daggermultifeature.feature1.data
 
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
+import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
 import javax.inject.Inject
 
-@Feature1Scope
+@Feature1FragmentScope
 class Feature1LocalDataSourceImpl
 @Inject
 constructor(): Feature1LocalDataSource{

@@ -1,4 +1,4 @@
-package com.codingwithmitch.daggermultifeature.feature1.ui
+package com.codingwithmitch.daggermultifeature.main.ui
 
 
 import android.content.Context
@@ -8,26 +8,27 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
-import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
-import kotlinx.android.synthetic.main.fragment_feature1_main.*
+import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
+import com.codingwithmitch.daggermultifeature.main.di.MainFragmentScope
+import com.codingwithmitch.daggermultifeature.main.viewmodels.MainViewModelFactory
+import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
+import javax.inject.Named
 
-@Feature1FragmentScope
-class Feature1MainFragment
+@MainFragmentScope
+class MainFragment
 @Inject
 constructor(
-    private val viewModelFactory: Feature1ViewModelFactory
-): Fragment(R.layout.fragment_feature1_main) {
+    private val viewModelFactory: MainViewModelFactory,
+    private @Named("application_name") val applicationName: String
+): Fragment(R.layout.fragment_main){
 
     private val TAG: String = "AppDebug"
 
-    val viewModel: Feature1ViewModel by viewModels {
+    val viewModel: MainViewModel by viewModels {
         viewModelFactory
     }
 
@@ -36,29 +37,31 @@ constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_go_next.setOnClickListener {
-            findNavController().navigate(R.id.action_feature1MainFragment_to_feature1NextFragment)
+        btn_go_feature1.setOnClickListener {
+            mainNavController.navFeature1()
         }
 
         subscribeObservers()
         initUI()
+
     }
 
     private fun subscribeObservers(){
-        viewModel.feature1MainString.observe(viewLifecycleOwner, Observer { mainString ->
-            fragment_name.text = mainString
+        viewModel.homeString.observe(viewLifecycleOwner, Observer { homeString ->
+            fragment_name.text = homeString
         })
     }
 
     private fun initUI(){
-        mainNavController.setDrawerItemChecked(R.id.nav_feature1)
-        viewModel.retrieveMainString()
+        mainNavController.setDrawerItemChecked(R.id.nav_main)
+        main_header.text = applicationName
+        viewModel.retrieveHomeString()
     }
 
     override fun onAttach(context: Context) {
         ((activity?.application) as BaseApplication)
             .getAppComponent()
-            .feature1Component()
+            .mainComponent()
             .create()
             .inject(this)
         super.onAttach(context)
@@ -68,4 +71,21 @@ constructor(
             Log.e(TAG, "$context must implement MainNavController" )
         }
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Scope
+import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
 import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1Repository
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@Feature1Scope
+@Feature1FragmentScope
 class Feature1ViewModel
 @Inject
 constructor(

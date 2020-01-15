@@ -5,9 +5,9 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_main"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Home"
+            android:title="Main"
             app:showAsAction="ifRoom"
             />
 
@@ -19,13 +19,6 @@
             app:showAsAction="ifRoom"
             />
 
-
-        <item
-            android:id="@+id/nav_feature2"
-            android:icon="@drawable/ic_accessibility_black_24dp"
-            android:title="Feature 2"
-            app:showAsAction="ifRoom"
-            />
 
 
 

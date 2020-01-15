@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/feature1MainFragment"
@@ -21,32 +21,15 @@
         android:label="fragment_feature1_next"
         tools:layout="@layout/fragment_feature1_next" />
 
-    <fragment
-        android:id="@+id/feature2MainFragment"
-        android:name="com.codingwithmitch.daggermultifeature.feature2.ui.Feature2MainFragment"
-        android:label="fragment_feature2_main"
-        tools:layout="@layout/fragment_feature2_main" >
-        <action
-            android:id="@+id/action_feature2MainFragment_to_feature2NextFragment"
-            app:destination="@id/feature2NextFragment" />
-    </fragment>
+
 
     <fragment
-        android:id="@+id/feature2NextFragment"
-        android:name="com.codingwithmitch.daggermultifeature.feature2.ui.Feature2NextFragment"
-        android:label="fragment_feature2_next"
-        tools:layout="@layout/fragment_feature2_next" />
-
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.codingwithmitch.daggermultifeature.home.ui.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:id="@+id/mainFragment"
+        android:name="com.codingwithmitch.daggermultifeature.main.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_homeFragment_to_feature1MainFragment"
+            android:id="@+id/action_mainFragment_to_feature1MainFragment"
             app:destination="@id/feature1MainFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_feature2MainFragment"
-            app:destination="@id/feature2MainFragment" />
     </fragment>
 </navigation>

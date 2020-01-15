@@ -6,6 +6,8 @@ import com.codingwithmitch.daggermultifeature.app.di.DaggerAppComponent
 
 class BaseApplication : Application() {
 
+    private val TAG: String = "AppDebug"
+
     private val appComponent = DaggerAppComponent.builder()
         .application(this)
         .build()
@@ -14,6 +16,7 @@ class BaseApplication : Application() {
         super.onCreate()
         appComponent.inject(this)
     }
+
 
     fun getAppComponent(): AppComponent{
         return appComponent
