@@ -12,12 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
+import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class Feature1MainFragment
 @Inject
 constructor(
@@ -55,6 +54,11 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
+        ((activity?.application) as BaseApplication)
+            .getAppComponent()
+            .feature1Component()
+            .create()
+            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

@@ -22,10 +22,10 @@ abstract class ViewModelModule{
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(Feature1ViewModel::class)
-    abstract fun bindFeature1ViewModel(feature1ViewModel: Feature1ViewModel): ViewModel
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(Feature1ViewModel::class)
+//    abstract fun bindFeature1ViewModel(feature1ViewModel: Feature1ViewModel): ViewModel
 
 
     @Binds

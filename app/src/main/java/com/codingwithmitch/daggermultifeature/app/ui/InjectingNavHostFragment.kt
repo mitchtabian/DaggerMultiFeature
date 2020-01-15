@@ -3,10 +3,14 @@ package com.codingwithmitch.daggermultifeature.app.ui
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.NavHostFragment
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
+import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentBuildersModule
 import javax.inject.Inject
+import javax.inject.Provider
 
 /**
  * From: https://github.com/zawadz88/NavigationComponentPlayground/blob/master/app/src/main/java/com/github/zawadz88/navigationcomponentplayground/di/factory/InjectingFragmentFactory.kt
@@ -20,6 +24,9 @@ constructor() : NavHostFragment() {
     @Inject
     protected lateinit var fragmentFactory: FragmentFactory
 
+    @Inject
+    protected lateinit var creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "NavHostFragment: $fragmentFactory")
         childFragmentManager.fragmentFactory = fragmentFactory
@@ -27,9 +34,19 @@ constructor() : NavHostFragment() {
     }
 
     override fun onAttach(context: Context) {
-        ((activity?.application) as BaseApplication)
+        val feature1Component = ((activity?.application) as BaseApplication)
             .getAppComponent()
-            .inject(this)
+            .feature1Component()
+            .create()
+
+        val appComponent = ((activity?.application) as BaseApplication)
+            .getAppComponent()
+
+        appComponent.inject(this)
+
+        for(viewmodel in creators.entries){
+            Log.d(TAG, "ViewModel Map: ${viewmodel.value.get().javaClass.name}")
+        }
         super.onAttach(context)
     }
 

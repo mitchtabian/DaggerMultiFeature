@@ -8,9 +8,7 @@ import com.codingwithmitch.daggermultifeature.feature1.repository.Feature1Reposi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class Feature1ViewModel
 @Inject
 constructor(

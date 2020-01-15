@@ -14,9 +14,7 @@ import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class Feature1NextFragment
 @Inject
 constructor(
