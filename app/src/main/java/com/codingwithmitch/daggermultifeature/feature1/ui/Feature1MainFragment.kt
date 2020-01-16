@@ -8,22 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.app.ui.ComponentManager
-import com.codingwithmitch.daggermultifeature.app.ui.MainActivity
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
-import com.codingwithmitch.daggermultifeature.feature1.fragments.Feature1FragmentFactory
 import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
-import com.codingwithmitch.daggermultifeature.main.fragments.MainFragmentFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
 import javax.inject.Inject
 
-//@Feature1FragmentScope
 class Feature1MainFragment
 @Inject
 constructor(
@@ -43,7 +36,6 @@ constructor(
 
         btn_go_next.setOnClickListener {
             findNavController().navigate(R.id.action_feature1MainFragment_to_feature1NextFragment)
-//            mainNavController.navController().navigate(R.id.action_feature1MainFragment_to_feature1NextFragment)
         }
 
         subscribeObservers()

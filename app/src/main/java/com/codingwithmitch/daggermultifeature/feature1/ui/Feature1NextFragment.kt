@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_feature1_main.fragment_name
 import kotlinx.android.synthetic.main.fragment_feature1_next.*
 import javax.inject.Inject
 
-//@Feature1FragmentScope
 class Feature1NextFragment
 @Inject
 constructor(
@@ -42,7 +41,6 @@ constructor(
 
         btn_go_final.setOnClickListener {
             findNavController().navigate(R.id.action_feature1NextFragment_to_feature1FinalFragment)
-//            mainNavController.navController().navigate(R.id.action_feature1NextFragment_to_feature1FinalFragment)
         }
         printBackstack()
     }

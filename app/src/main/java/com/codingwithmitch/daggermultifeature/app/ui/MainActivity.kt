@@ -1,7 +1,6 @@
 package com.codingwithmitch.daggermultifeature.app.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import androidx.annotation.IdRes
@@ -11,12 +10,10 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Component
 import com.codingwithmitch.daggermultifeature.feature1.fragments.Feature1FragmentFactory
 import com.codingwithmitch.daggermultifeature.feature1.fragments.Feature1NavHostFragment
-import com.codingwithmitch.daggermultifeature.main.di.MainComponent
 import com.codingwithmitch.daggermultifeature.main.fragments.MainFragmentFactory
 import com.codingwithmitch.daggermultifeature.main.fragments.MainNavHostFragment
 import com.codingwithmitch.daggermultifeature.main.ui.MainFragment
@@ -83,13 +80,17 @@ class MainActivity : FragmentActivity(),
                 newNavHostFragment,
                 getString(R.string.NavHostFragmentTag)
             )
-//            .setPrimaryNavigationFragment(newNavHostFragment)
+            .setPrimaryNavigationFragment(newNavHostFragment)
             .commit()
 
+//        CoroutineScope(Main).launch {
+//            delay(300)
+//            navController = findNavController(R.id.main_nav_host_container)
+//            setupNavDrawer()
+//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        restoreFragmentFactory(savedInstanceState)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -97,66 +98,9 @@ class MainActivity : FragmentActivity(),
             R.navigation.main_nav_graph,
             MainFragmentFactory.FRAGMENT_FACTORY_NAME
         )
-        setupNavDrawer()
+//        setupNavDrawer()
     }
 
-//    private fun restoreFragmentFactory(savedInstanceState: Bundle?){
-//        savedInstanceState?.let{ inState ->
-//            (inState[getString(R.string.bundle_key_fragment_factory)] as String?)
-//                ?.let{ factoryClassName ->
-//                    Log.d(TAG, "MainActivity: restoreFragmentFactory called: $factoryClassName")
-//                    setFragmentFactory(factoryClassName)
-//                }?: setFragmentFactory(MainFragmentFactory.FRAGMENT_FACTORY_NAME)
-//        }?: setFragmentFactory(MainFragmentFactory.FRAGMENT_FACTORY_NAME)
-//
-//    }
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        val factoryName = getCurrentFragmentFactoryName(
-//            supportFragmentManager.fragmentFactory
-//        )
-//        outState.putString(getString(R.string.bundle_key_fragment_factory), factoryName)
-//        super.onSaveInstanceState(outState)
-//    }
-
-//    override fun setFragmentFactory(factoryClassName: String){
-//
-//        val navHostFragment = supportFragmentManager
-//            .findFragmentByTag(getString(R.string.NavHostFragmentTag)) as NavHostFragment
-//
-//        navHostFragment.childFragmentManager.fragmentFactory = when(factoryClassName){
-//
-//            MainFragmentFactory.FRAGMENT_FACTORY_NAME -> {
-//                getMainFragmentFactory()
-//            }
-//
-//            Feature1FragmentFactory.FRAGMENT_FACTORY_NAME -> {
-//                getFeature1FragmentFactory()
-//            }
-//
-//            else ->{
-//                getMainFragmentFactory()
-//            }
-//        }
-//    }
-
-//    override fun setFragmentFactory(factoryClassName: String){
-//
-//        supportFragmentManager.fragmentFactory = when(factoryClassName){
-//
-//            MainFragmentFactory.FRAGMENT_FACTORY_NAME -> {
-//                getMainFragmentFactory()
-//            }
-//
-//            Feature1FragmentFactory.FRAGMENT_FACTORY_NAME -> {
-//                getFeature1FragmentFactory()
-//            }
-//
-//            else ->{
-//                getMainFragmentFactory()
-//            }
-//        }
-//    }
 
     private fun setupNavDrawer(){
 //        navigationView.setupWithNavController(navController)
@@ -245,9 +189,6 @@ class MainActivity : FragmentActivity(),
         drawer_layout.closeDrawer(Gravity.LEFT)
         return true
     }
-
-//    override fun navController(): NavController = navController
-
 }
 
 
