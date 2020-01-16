@@ -4,6 +4,7 @@ import android.app.Application
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.feature1.di.Feature1Component
 import com.codingwithmitch.daggermultifeature.main.di.MainComponent
+import com.codingwithmitch.daggermultifeature.main.di.MainFragmentBuildersModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

@@ -3,33 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/mainFragment">
-
-    <fragment
-        android:id="@+id/feature1MainFragment"
-        android:name="com.codingwithmitch.daggermultifeature.feature1.ui.Feature1MainFragment"
-        android:label="fragment_feature1_main"
-        tools:layout="@layout/fragment_feature1_main" >
-        <action
-            android:id="@+id/action_feature1MainFragment_to_feature1NextFragment"
-            app:destination="@id/feature1NextFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/feature1NextFragment"
-        android:name="com.codingwithmitch.daggermultifeature.feature1.ui.Feature1NextFragment"
-        android:label="fragment_feature1_next"
-        tools:layout="@layout/fragment_feature1_next" />
-
-
+    app:startDestination="@id/mainFragment"
+    >
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.codingwithmitch.daggermultifeature.main.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_mainFragment_to_feature1MainFragment"
-            app:destination="@id/feature1MainFragment" />
     </fragment>
 </navigation>

@@ -7,7 +7,7 @@ import com.codingwithmitch.daggermultifeature.main.fragments.MainFragmentFactory
 
 private val TAG: String = "AppDebug"
 
-fun MainActivity.getCurrentFragmentFactoryName(
+fun getCurrentFragmentFactoryName(
     fragmentFactory: FragmentFactory
 ): String {
 
@@ -25,18 +25,19 @@ fun MainActivity.getCurrentFragmentFactoryName(
     return factoryName
 }
 
-fun MainActivity.getMainFragmentFactory(): FragmentFactory {
+
+fun MainActivity.getMainFragmentFactory(): MainFragmentFactory {
     mainComponentManager
-        .returnMainComponent()
+        .mainComponent
         .inject(this)
-    return mainComponentManager.returnMainComponent().fragmentFactory
+    return mainComponentManager.mainComponent.fragmentFactory
 }
 
-fun MainActivity.getFeature1FragmentFactory(): FragmentFactory{
+fun MainActivity.getFeature1FragmentFactory(): Feature1FragmentFactory{
     mainComponentManager
-        .returnFeature1Component()
+        .feature1Component
         .inject(this)
-    return mainComponentManager.returnFeature1Component().fragmentFactory
+    return mainComponentManager.feature1Component.fragmentFactory
 }
 
 

@@ -11,14 +11,16 @@ import androidx.lifecycle.Observer
 
 import com.codingwithmitch.daggermultifeature.R
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
+import com.codingwithmitch.daggermultifeature.app.ui.MainActivity
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 import com.codingwithmitch.daggermultifeature.main.di.MainFragmentScope
+import com.codingwithmitch.daggermultifeature.main.fragments.MainFragmentFactory
 import com.codingwithmitch.daggermultifeature.main.viewmodels.MainViewModelFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 import javax.inject.Named
 
-@MainFragmentScope
+//@MainFragmentScope
 class MainFragment
 @Inject
 constructor(
@@ -43,6 +45,28 @@ constructor(
 
         subscribeObservers()
         initUI()
+
+        printBackstack()
+    }
+
+    fun printBackstack(){
+        val navHostFragment = activity?.supportFragmentManager
+            ?.findFragmentById(R.id.main_nav_host_container)
+        Log.d(TAG, "Feature1: ${navHostFragment?.childFragmentManager?.fragments?.size}")
+
+        val fragments: List<Fragment>? = navHostFragment?.childFragmentManager?.fragments
+        if(fragments != null){
+            for(fragment in fragments){
+                Log.d(TAG, "Feature1: $fragment")
+            }
+        }
+
+        val fs = (activity?.supportFragmentManager)?.fragments
+        if(fs != null){
+            for(f in fs){
+                Log.d(TAG, "Feature1-fs: $f")
+            }
+        }
 
     }
 

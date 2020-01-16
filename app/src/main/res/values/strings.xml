@@ -2,4 +2,9 @@
     <string name="app_name">DaggerMultiFeature</string>
 
     <string name="bundle_key_fragment_factory">fragment_factory</string>
+
+    <string name="NavHostFragmentTag">NavHostFragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

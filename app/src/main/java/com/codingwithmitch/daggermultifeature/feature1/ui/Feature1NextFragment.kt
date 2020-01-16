@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 
 import com.codingwithmitch.daggermultifeature.R
@@ -15,9 +16,11 @@ import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
 import com.codingwithmitch.daggermultifeature.feature1.viewmodels.Feature1ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_feature1_main.*
+import kotlinx.android.synthetic.main.fragment_feature1_main.fragment_name
+import kotlinx.android.synthetic.main.fragment_feature1_next.*
 import javax.inject.Inject
 
-@Feature1FragmentScope
+//@Feature1FragmentScope
 class Feature1NextFragment
 @Inject
 constructor(
@@ -36,6 +39,32 @@ constructor(
         super.onViewCreated(view, savedInstanceState)
         subscribeObservers()
         initUI()
+
+        btn_go_final.setOnClickListener {
+            findNavController().navigate(R.id.action_feature1NextFragment_to_feature1FinalFragment)
+//            mainNavController.navController().navigate(R.id.action_feature1NextFragment_to_feature1FinalFragment)
+        }
+        printBackstack()
+    }
+
+    fun printBackstack(){
+        val navHostFragment = activity?.supportFragmentManager
+            ?.findFragmentById(R.id.main_nav_host_container)
+        Log.d(TAG, "Feature1: ${navHostFragment?.childFragmentManager?.fragments?.size}")
+
+        val fragments: List<Fragment>? = navHostFragment?.childFragmentManager?.fragments
+        if(fragments != null){
+            for(fragment in fragments){
+                Log.d(TAG, "Feature1: $fragment")
+            }
+        }
+
+        val fs = (activity?.supportFragmentManager)?.fragments
+        if(fs != null){
+            for(f in fs){
+                Log.d(TAG, "Feature1-fs: $f")
+            }
+        }
     }
 
     private fun subscribeObservers(){
