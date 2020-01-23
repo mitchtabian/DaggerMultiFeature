@@ -3,7 +3,7 @@
 2. Single activity
 3. FragmentFactory
 4. Multi-feature package structure
-5. Navigation components
+5. Navigation components 
+    - Separate nav graph for each feature
 
-# Warning
-This has a bug. The navigation backstack doesn't work properly. See issue: https://stackoverflow.com/questions/59775946/fragments-not-added-to-backstack-using-navigation-components
+
