@@ -2,18 +2,27 @@ package com.codingwithmitch.daggermultifeature.main.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.NavigationRes
 import androidx.navigation.fragment.NavHostFragment
 import com.codingwithmitch.daggermultifeature.app.BaseApplication
-import com.codingwithmitch.daggermultifeature.feature1.fragments.Feature1FragmentFactory
-import com.codingwithmitch.daggermultifeature.feature1.fragments.Feature1NavHostFragment
+import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
+import com.codingwithmitch.daggermultifeature.main.di.MainFragmentScope
+import java.lang.ClassCastException
 import javax.inject.Inject
 
+@MainFragmentScope
 class MainNavHostFragment
 @Inject
 constructor(
-    private val mainFragmentFactory: MainFragmentFactory
 ): NavHostFragment(){
+
+    private val TAG: String = "AppDebug"
+
+    lateinit var mainNavController: MainNavController
+
+    @Inject
+    lateinit var mainFragmentFactory: MainFragmentFactory
 
     override fun onAttach(context: Context) {
         ((activity?.application) as BaseApplication)
@@ -21,8 +30,20 @@ constructor(
             .mainComponent()
             .create()
             .inject(this)
+
         childFragmentManager.fragmentFactory = mainFragmentFactory
+        try{
+            mainNavController = context as MainNavController
+        }catch (e: ClassCastException){
+            Log.e(TAG, "$context must implement MainNavController" )
+        }
         super.onAttach(context)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainNavController.setNavController(this.navController)
+        mainNavController.setupNavDrawer()
     }
 
     companion object{
@@ -31,7 +52,6 @@ constructor(
 
         @JvmStatic
         fun create(
-            mainFragmentFactory: MainFragmentFactory,
             @NavigationRes graphId: Int = 0
         ): MainNavHostFragment {
             var bundle: Bundle? = null
@@ -39,7 +59,7 @@ constructor(
                 bundle = Bundle()
                 bundle.putInt(KEY_GRAPH_ID, graphId)
             }
-            val result = MainNavHostFragment(mainFragmentFactory)
+            val result = MainNavHostFragment()
             if(bundle != null){
                 result.arguments = bundle
             }

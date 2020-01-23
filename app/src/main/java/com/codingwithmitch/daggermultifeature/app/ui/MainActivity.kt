@@ -7,8 +7,6 @@ import androidx.annotation.IdRes
 import androidx.annotation.NavigationRes
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.codingwithmitch.daggermultifeature.R
@@ -20,10 +18,6 @@ import com.codingwithmitch.daggermultifeature.main.ui.MainFragment
 import com.google.android.material.navigation.NavigationView
 
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class MainActivity : FragmentActivity(),
     MainNavController,
@@ -32,21 +26,11 @@ class MainActivity : FragmentActivity(),
 
     private val TAG: String = "AppDebug"
 
-    private val drawerNavOptions: NavOptions by lazy {
-        NavOptions.Builder()
-            .setPopUpTo(R.id.mainFragment, true)
-            .build()
-    }
-
     private val navigationView: NavigationView by lazy {
         findViewById<NavigationView>(R.id.nav_view)
     }
 
-    val mainComponentManager: ComponentManager by lazy {
-        ComponentManager(this)
-    }
-
-//    private lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     private fun createNavHost(@NavigationRes graphId: Int, fragmentFactoryName: String){
 
@@ -54,21 +38,18 @@ class MainActivity : FragmentActivity(),
 
             MainFragmentFactory.FRAGMENT_FACTORY_NAME -> {
                 MainNavHostFragment.create(
-                    getMainFragmentFactory(),
                     graphId
                 )
             }
 
             Feature1FragmentFactory.FRAGMENT_FACTORY_NAME ->{
                 Feature1NavHostFragment.create(
-                    getFeature1FragmentFactory(),
                     graphId
                 )
             }
 
             else ->{
                 MainNavHostFragment.create(
-                    getMainFragmentFactory(),
                     graphId
                 )
             }
@@ -82,29 +63,12 @@ class MainActivity : FragmentActivity(),
             )
             .setPrimaryNavigationFragment(newNavHostFragment)
             .commit()
-
-//        CoroutineScope(Main).launch {
-//            delay(300)
-//            navController = findNavController(R.id.main_nav_host_container)
-//            setupNavDrawer()
-//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        createNavHost(
-            R.navigation.main_nav_graph,
-            MainFragmentFactory.FRAGMENT_FACTORY_NAME
-        )
-//        setupNavDrawer()
-    }
-
-
-    private fun setupNavDrawer(){
-//        navigationView.setupWithNavController(navController)
-        navigationView.setNavigationItemSelectedListener(this)
+        navMain()
     }
 
     override fun navFeature1() {
@@ -129,12 +93,9 @@ class MainActivity : FragmentActivity(),
         }
         else{
             // must exit from MainFragment
-            if(getBackStackCount() <= 1){
+            if(getBackStackCount() < 1){
                 if(!isMainFragmentInView()){
-                    createNavHost(
-                        R.navigation.main_nav_graph,
-                        MainFragmentFactory.FRAGMENT_FACTORY_NAME
-                    )
+                    navMain()
                     return
                 }
             }
@@ -157,9 +118,7 @@ class MainActivity : FragmentActivity(),
             .findFragmentById(R.id.main_nav_host_container)
         navHostFragment?.let { host ->
             host.childFragmentManager.let { fm ->
-                fm.fragments.let { fragments ->
-                    return fragments.size
-                }
+                return fm.backStackEntryCount
             }
         }
         return 0
@@ -188,6 +147,17 @@ class MainActivity : FragmentActivity(),
         }
         drawer_layout.closeDrawer(Gravity.LEFT)
         return true
+    }
+
+    override fun navController() = navController
+
+    override fun setNavController(navController: NavController){
+        this.navController = navController
+    }
+
+    override fun setupNavDrawer(){
+        navigationView.setupWithNavController(navController)
+        navigationView.setNavigationItemSelectedListener(this)
     }
 }
 

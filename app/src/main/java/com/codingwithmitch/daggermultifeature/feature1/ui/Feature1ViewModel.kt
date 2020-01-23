@@ -20,9 +20,11 @@ constructor(
 
     private val _feature1MainString: MutableLiveData<String> = MutableLiveData()
     private val _feature1NextString: MutableLiveData<String> = MutableLiveData()
+    private val _feature1FinalString: MutableLiveData<String> = MutableLiveData()
 
     val feature1MainString: LiveData<String> get() = _feature1MainString
     val feature1NextString: LiveData<String> get() = _feature1NextString
+    val feature1FinalString: LiveData<String> get() = _feature1FinalString
 
     fun retrieveMainString(){
         viewModelScope.launch {
@@ -35,6 +37,13 @@ constructor(
         viewModelScope.launch {
             val nextString = feature1Repository.getFeature1NextString()
             _feature1NextString.value = nextString
+        }
+    }
+
+    fun retrieveFinalString(){
+        viewModelScope.launch {
+            val finalString = feature1Repository.getFeature1FinalString()
+            _feature1FinalString.value = finalString
         }
     }
 

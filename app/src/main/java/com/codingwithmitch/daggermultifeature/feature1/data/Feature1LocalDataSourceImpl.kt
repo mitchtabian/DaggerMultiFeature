@@ -16,5 +16,7 @@ constructor(): Feature1LocalDataSource{
         return "Feature1NextFragment"
     }
 
-
+    override suspend fun getFeature1FinalString(): String {
+        return "Feature1FinalFragment"
+    }
 }

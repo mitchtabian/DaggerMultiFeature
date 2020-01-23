@@ -6,6 +6,7 @@ import com.codingwithmitch.daggermultifeature.feature1.di.Feature1FragmentScope
 import javax.inject.Inject
 import javax.inject.Provider
 
+@Feature1FragmentScope
 class Feature1ViewModelFactory
 @Inject
 constructor(

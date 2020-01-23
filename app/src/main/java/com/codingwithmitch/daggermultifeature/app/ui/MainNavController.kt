@@ -6,9 +6,11 @@ import androidx.navigation.fragment.NavHostFragment
 
 interface MainNavController {
 
-//    fun setFragmentFactory(factoryClassName: String)
+    fun navController(): NavController
 
-//    fun navController(): NavController
+    fun setNavController(navController: NavController)
+
+    fun setupNavDrawer()
 
     fun navFeature1()
 

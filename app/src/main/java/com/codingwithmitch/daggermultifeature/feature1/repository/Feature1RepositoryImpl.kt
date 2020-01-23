@@ -19,4 +19,7 @@ constructor(
         return feature1LocalDataSource.getFeature1NextString()
     }
 
+    override suspend fun getFeature1FinalString(): String {
+        return feature1LocalDataSource.getFeature1FinalString()
+    }
 }
