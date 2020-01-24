@@ -8,25 +8,21 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainModule {
+object MainModule {
 
-    @Module
-    companion object{
+    @MainFragmentScope
+    @Provides
+    @JvmStatic
+    fun provideMainLocalDataSource(): MainLocalDataSource {
+        return MainLocalDataSourceImpl()
+    }
 
-        @MainFragmentScope
-        @Provides
-        @JvmStatic
-        fun provideMainLocalDataSource(): MainLocalDataSource {
-            return MainLocalDataSourceImpl()
-        }
-
-        @MainFragmentScope
-        @Provides
-        @JvmStatic
-        fun provideMainRepository(localDataSource: MainLocalDataSource): MainRepository {
-            return MainRepositoryImpl(
-                localDataSource
-            )
-        }
+    @MainFragmentScope
+    @Provides
+    @JvmStatic
+    fun provideMainRepository(localDataSource: MainLocalDataSource): MainRepository {
+        return MainRepositoryImpl(
+            localDataSource
+        )
     }
 }

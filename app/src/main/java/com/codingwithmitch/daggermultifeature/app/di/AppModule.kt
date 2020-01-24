@@ -6,20 +6,14 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class AppModule{
+object AppModule{
 
-    @Module
-    companion object{
-
-        @Singleton
-        @Provides
-        @Named("application_name")
-        @JvmStatic
-        fun provideApplicationName(): String {
-            return "Dagger Multi-feature Demo"
-        }
-
-
+    @Singleton
+    @Provides
+    @Named("application_name")
+    @JvmStatic
+    fun provideApplicationName(): String {
+        return "Dagger Multi-feature Demo"
     }
 
 }
