@@ -25,11 +25,6 @@ interface Feature1Component {
 
     fun inject(feature1NavHostFragment: Feature1NavHostFragment)
 
-    fun inject(feature1MainFragment: Feature1MainFragment)
-
-    fun inject(feature1NextFragment: Feature1NextFragment)
-
-    fun inject(feature1FinalFragment: Feature1FinalFragment)
 }
 
 

@@ -53,11 +53,6 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
-        ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .feature1Component()
-            .create()
-            .inject(this)
         try{
             mainNavController = context as MainNavController
         }catch(e: ClassCastException){

@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 
 import com.codingwithmitch.daggermultifeature.R
-import com.codingwithmitch.daggermultifeature.app.BaseApplication
 import com.codingwithmitch.daggermultifeature.app.ui.MainNavController
 import com.codingwithmitch.daggermultifeature.main.viewmodels.MainViewModelFactory
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -56,11 +55,6 @@ constructor(
     }
 
     override fun onAttach(context: Context) {
-        ((activity?.application) as BaseApplication)
-            .getAppComponent()
-            .mainComponent()
-            .create()
-            .inject(this)
         super.onAttach(context)
         try{
             mainNavController = context as MainNavController

@@ -23,5 +23,4 @@ interface MainComponent {
 
     fun inject(mainNavHostFragment: MainNavHostFragment)
 
-    fun inject(mainFragment: MainFragment)
 }
