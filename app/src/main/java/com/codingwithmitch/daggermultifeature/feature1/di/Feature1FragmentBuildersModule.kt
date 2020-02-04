@@ -24,11 +24,6 @@ abstract class Feature1FragmentBuildersModule {
 
     @Binds
     @IntoMap
-    @Feature1FragmentKey(Feature1NavHostFragment::class)
-    abstract fun bindNavHostFragment(feature1NavHostFragment: Feature1NavHostFragment): Fragment
-
-    @Binds
-    @IntoMap
     @Feature1FragmentKey(Feature1MainFragment::class)
     abstract fun bindMainFragment(feature1MainFragment: Feature1MainFragment): Fragment
 

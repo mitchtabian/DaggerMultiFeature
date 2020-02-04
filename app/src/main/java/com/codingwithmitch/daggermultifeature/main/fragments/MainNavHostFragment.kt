@@ -12,10 +12,7 @@ import java.lang.ClassCastException
 import javax.inject.Inject
 
 @MainFragmentScope
-class MainNavHostFragment
-@Inject
-constructor(
-): NavHostFragment(){
+class MainNavHostFragment : NavHostFragment(){
 
     private val TAG: String = "AppDebug"
 

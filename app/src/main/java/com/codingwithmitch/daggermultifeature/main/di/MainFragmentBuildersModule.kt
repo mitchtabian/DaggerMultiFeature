@@ -18,11 +18,6 @@ abstract class MainFragmentBuildersModule {
 
     @Binds
     @IntoMap
-    @MainFragmentKey(MainNavHostFragment::class)
-    abstract fun bindNavHostFragment(mainNavHostFragment: MainNavHostFragment): Fragment
-
-    @Binds
-    @IntoMap
     @MainFragmentKey(MainFragment::class)
     abstract fun bindMainFragment(mainFragment: MainFragment): Fragment
 }
